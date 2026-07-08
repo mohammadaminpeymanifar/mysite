@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from website.models import contact
 # Create your views here.
 
 def index_view(request):
@@ -10,3 +11,7 @@ def about_view(request):
 
 def contact_view(request):
     return render (request ,'website/contact.html')
+
+
+def test_view(request):
+    return render(request,'tem/test1.html')
