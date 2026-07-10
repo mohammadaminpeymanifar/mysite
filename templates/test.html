@@ -6,10 +6,21 @@
     <title>Form test</title>
 </head>
 <body>
-    
+    <!--
+    ارسال فرم به URL با نام website:test
+    method="post" برای ارسال داده به سرور
+    -->
     <form action="{% url 'website:test' %}" method="post">
+        <!-- توکن امنیتی CSRF -->
         {% csrf_token %}
-        {{form.as_p}}
+
+        <!--
+            نمایش تمام فیلدهای فرم
+            هر فیلد داخل یک تگ <p>
+        -->
+        {{form.as_p}}  
+        
+        <!-- دکمه ارسال فرم -->
         <button type="submit">submit</button>
     </form>
 </body>

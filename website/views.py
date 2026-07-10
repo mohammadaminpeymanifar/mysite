@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from 
-from website.models import contact
-from website.forms import NameForm
+from django.http import HttpResponse , JsonResponse
+from website.forms import NameForm , contactForm
 # Create your views here.
 
 def index_view(request):
@@ -15,17 +14,13 @@ def contact_view(request):
 
 
 def test_view(request):
-    if request.method == 'POST':
-        form = NameForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            subject = form.cleaned_data['subject']
-            email = form.cleaned_data['email']
-            message = form.cleaned_data['message']
-            print(name, subject, email, message)
-            return HttpResponse('done')
+    if request.method == 'POST':                       # اگر کاربر فرم را Submit کرده باشد
+        form = contactForm(request.POST)               # دریافت اطلاعات ارسال شده از فرم
+        if form.is_valid():                            # اعتبارسنجی داده های فرم
+            form.save()                                # ذخیره رکورد در دیتابیس
+            return HttpResponse('done')                # نمایش پاسخ موفقیت
         else:
-            return HttpResponse('not valid')
+            return HttpResponse('not valid')           # در صورت نامعتبر بودن داده ها
 
-    form = NameForm()
-    return render(request,'test.html',{'form':form})
+    form = contactForm()                               # درخواست GET (اولین بار که صفحه باز می شود)
+    return render(request,'test.html',{'form':form})   # ارسال فرم به قالب
