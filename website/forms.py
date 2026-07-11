@@ -1,5 +1,5 @@
 from django import forms
-from website.models import contact                     # مدل دیتابیس
+from website.models import contact , Newsletter                     # مدل دیتابیس
 
 class NameForm(forms.Form):
     name = forms.CharField(max_length=255)             # فیلد متنی
@@ -7,7 +7,15 @@ class NameForm(forms.Form):
     subject = forms.CharField(max_length=255)
     message = forms.CharField(widget=forms.Textarea)
 
+#contactForm
 class contactForm (forms.ModelForm):                   # فرم متصل به مدل (ModelForm)
     class Meta:
         model = contact                                # مدلی که فرم به آن متصل است
         fields = '__all__'                             # تمام فیلدهای مدل در فرم نمایش داده شوند
+
+
+#NewsletterForm
+class NewsletterForm(forms.ModelForm):
+    class Meta:
+        model = Newsletter
+        fields = '__all__'
