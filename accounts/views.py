@@ -4,7 +4,11 @@ from django.shortcuts import render
 
 
 def login_view(request):
-    return render (request,'accounts/login.html')
+    if request.user.is_authenticated:
+        message = f'user is authenticated as {request.user.username}'
+    else:
+        message = 'user is not authenticated'
+    return render (request,'accounts/login.html',{'message':message})
 
 
 # def logout_view(request):
