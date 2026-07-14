@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     #App 
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
+    'accounts.apps.AccountsConfig',
     #Default Mudule
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,12 +43,6 @@ INSTALLED_APPS = [
     #Mudule Install
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.humanize',
-    'django.contrib.sites',
-    'django.contrib.sitemaps',
-    'debug_toolbar',
-    'django_extensions',
-    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +53,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
